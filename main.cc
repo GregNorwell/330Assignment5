@@ -8,7 +8,7 @@
 #include "functions.cc"
 int main(int argc, char* argv[]){
   bool hex, bin;
-  int n;
+  int n, altBuffer, alt;
   int *arr = calloc(n, sizeof(char));
   if(arr == NULL){perror("Cannot allocate memory");return(-1);}
   
