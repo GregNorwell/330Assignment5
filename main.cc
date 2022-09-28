@@ -1,16 +1,16 @@
 #include <cstdio>
+#include <cstdlib>
 #include <unistd.h>
+#include <cstring>
+#include <string.h>
+#include <fcntl.h>
 
-#define BUFSIZ 1
-
-#include "header.h"
 #include "functions.cc"
 int main(int argc, char* argv[]){
-  char buf[BUFSIZ];
+  bool hex, bin;
   int n;
-  
-  file = argv[optind];
-  int fd = open(file, O_RDONLY);
+  int *arr = calloc(n, sizeof(char));
+  if(arr == NULL){perror("Cannot allocate memory");return(-1);}
   
     while((opt = getopt(argc, argv, ":b:n:C:r:XB")) != -1)
     {
@@ -26,8 +26,10 @@ int main(int argc, char* argv[]){
        case 'r':
          break;
        case 'X':
+         hex = true;
          break;
        case 'B':
+         bin = true;
          break;
        case ':':
          perror("option needs a value");
@@ -39,6 +41,15 @@ int main(int argc, char* argv[]){
          break;
      }
    }
-  while((n = read(fd, buf, BUFSIZ)) > 0)
-    write(STDOUT_FILENO, buf, n);
+  
+  for(int i = optind; i < argc; i++)
+  {
+    file = argv[i];
+    int fd = open(file, O_RDONLY);
+    for(int i = 0; i < n; i++)
+      arr + i = read(fd, arr, n);
+  }
+  
+  //  write(STDOUT_FILENO, buf, n);
+  free(arr);
 }
