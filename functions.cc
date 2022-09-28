@@ -1,14 +1,7 @@
 #include <cstdio>
-#include <bitset>
 
 #include "header.h"
-const char* buffer_size(int N){
-  
-}
-const char* change_bytes(char msg[], int N){
-  
-}
-const char* caesar_cipher(char* msg[], int k){ // does each word at a time
+void caesar_cipher(char msg[], int limit, int k){ // does each word at a time
   char ch;
   for(int i = 0; msg[i] != '\0'; i++)
   {
@@ -26,9 +19,8 @@ const char* caesar_cipher(char* msg[], int k){ // does each word at a time
       msg[i] = ch;
     }
   }
-    return msg;
 }
-const char* general_rotation(char* msg[], int k){
+void general_rotation(char msg[], int limit, int k){
   char ch;
   for(int i = 0; msg[i] != '\0'; i++)
   {
@@ -36,15 +28,12 @@ const char* general_rotation(char* msg[], int k){
     ch = ch + k;
     msg[i] = ch;
   }
-  return msg;
 }
-const char* hex_conversion(char* msg[])
+void hex_conversion(char* msg[], int limit)
 {
   
-  
 }
-const char* bin_conversion(char* msg[])
+void bin_conversion(char* msg[], int limit)
 {
-  for(int i = 0; msg[i] != '\0'; i++)
-    bitset<8>
+  
 }
