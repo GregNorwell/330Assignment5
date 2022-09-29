@@ -6,8 +6,8 @@ void caesar_cipher(char &msg[], int k);
 //general rotation shifting all characters k times
 void general_rotation(char &msg[], int k);
 //output data from file in hexadecimal format
-void hex_conversion(char &msg[], int limit);
+void hex_conversion(char &msg[]);
 //output data from the file in binary notation
-void bin_conversion(char &msg[], int limit);
+void bin_conversion(char &msg[]);
 
 #endif
