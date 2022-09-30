@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstdlib>
 
 #include "header.h"
 void caesar_cipher(char *& msg, int k){ // does each word at a time
