@@ -9,7 +9,7 @@
 int main(int argc, char* argv[]){
     bool hex, bin;
     int buffer = 1, length = -1, CC = -1, GR = -1;
-    while((opt = getopt(argc, argv, ":b:n:C:r:XB")) != -1)
+    while((char opt = getopt(argc, argv, ":b:n:C:r:XB")) != -1)
     {
      switch(opt)
      {
@@ -46,19 +46,18 @@ int main(int argc, char* argv[]){
   for(int i = optind; i < argc; i++)
   {
     int j;
-    char *arr = calloc(0, sizeof(char));
+    char *arr = (char*)calloc(0, sizeof(char));
     if(arr == NULL){perror("Cannot allocate memory");return(-1);}
-    file = argv[i];
-    int fd = open(file, O_RDONLY);
+    int fd = open(argv[i], O_RDONLY);
     
     if(length != -1){
         for(j = 0; j < length; j++){
-          arr = realloc(arr, (j + buffer) * sizeof(char));
+          arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
           arr[j] = read(fd, arr, buffer);
         }
     }else{
         for(j = 0; arr[j] == '\0'; j++){
-          arr = realloc(arr, (j + buffer) * sizeof(char));
+          arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
           arr[j] = read(fd, arr, buffer);
         }
     }
