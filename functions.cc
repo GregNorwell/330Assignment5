@@ -1,7 +1,7 @@
 #include <cstdio>
 
 #include "header.h"
-void caesar_cipher(char msg[], int k){ // does each word at a time
+void caesar_cipher(char *& msg, int k){ // does each word at a time
   char ch;
   for(int i = 0; msg[i] != '\0'; i++)
   {
@@ -20,7 +20,7 @@ void caesar_cipher(char msg[], int k){ // does each word at a time
     }
   }
 }
-void general_rotation(char msg[], int k){
+void general_rotation(char *& msg, int k){
   char ch;
   for(int i = 0; msg[i] != '\0'; i++)
   {
@@ -29,11 +29,21 @@ void general_rotation(char msg[], int k){
     msg[i] = ch;
   }
 }
-void hex_conversion(char* msg[], int limit)
+void hex_conversion(char *& msg, int length)
 {
+  char *temp = new char[length * 2];
+  int j = 0;
   
+  for(int i = 0; msg[i] != '\0'; i++){
+    temp[j] = msg[i] & 15;
+    temp[j + 1] = msg[i] >> 4;
+    j += 2;
+  }
+  msg = realloc(msg, (length * 2) * sizeof(char));
+  for(int i = 0; i < (length * 2); i++)
+    msg[i] = temp[i];
 }
-void bin_conversion(char* msg[], int limit)
+void bin_conversion(char *& msg, int length)
 {
   
 }
