@@ -40,7 +40,7 @@ void hex_conversion(char *& msg, int length)
     temp[j + 1] = msg[i] >> 4;
     j += 2;
   }
-  msg = realloc(msg, (length * 2) * sizeof(char));
+  msg = (char*)realloc(msg, (length * 2) * sizeof(char));
   for(int i = 0; i < (length * 2); i++)
     msg[i] = temp[i];
 }
