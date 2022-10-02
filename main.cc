@@ -43,22 +43,29 @@ int main(int argc, char* argv[]){
      }
    }
   
-  for(int i = optind; i < argc; i++)
+  for(int i = argv[optind]; i < argc; i++)
   {
     int j;
     char *arr = (char*)calloc(0, sizeof(char));
     if(arr == NULL){perror("Cannot allocate memory");return(-1);}
     int fd = open(argv[i], O_RDONLY);
-    
-    if(length != -1){
-        for(j = 0; j < length; j++){
-          arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
-          arr[j] = read(fd, arr, buffer);
+      
+    if(strcmp(argv[optind], "-") == 0){
+        for(j = 0; arr[j] != '\0'; j++){
+            arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
+            arr[j] = read(STDIN_FILENO, arr, buffer);
         }
     }else{
-        for(j = 0; arr[j] == '\0'; j++){
-          arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
-          arr[j] = read(fd, arr, buffer);
+        if(length != -1){
+            for(j = 0; j < length; j++){
+              arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
+              arr[j] = read(fd, arr, buffer);
+            }
+        }else{
+            for(j = 0; arr[j] != '\0'; j++){
+              arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
+              arr[j] = read(fd, arr, buffer);
+            }
         }
     }
          
