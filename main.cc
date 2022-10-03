@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
             perror("Cannot open file");return(-1);
         }
       
-        if(strcmp(argv[optind], "-") == 0)
+        if(strcmp(argv[i], "-") == 0)
         {
             while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
                 if(write(STDOUT_FILENO, buffer, j) != j){
