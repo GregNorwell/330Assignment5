@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
     }
     for(int i = optind; i < argc; i++)
     {
-        int j;
+        int j = 0;
         char *arr = NULL;
         char *arr2 = NULL;
         int fd = open(argv[i], O_RDONLY);
@@ -108,7 +108,7 @@ int main(int argc, char* argv[])
                       perror("Cannot allocate memory");
                       return (-1);
                   }
-                }while(read(fd, &arr, 1) != 0);
+                }while(read(fd, arr, 1) != 0);
             }
         } 
         if(CC != -1)
@@ -127,7 +127,10 @@ int main(int argc, char* argv[])
         {
           bin_conversion(arr, j);
         }
-       write(STDOUT_FILENO, &arr, j);
+       while(read(fd, arr, bufsize))>0)
+       { 
+        write(STDOUT_FILENO, arr, j);
+       }
        free(arr);
        close(fd);
     }
