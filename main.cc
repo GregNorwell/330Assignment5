@@ -72,24 +72,21 @@ int main(int argc, char* argv[])
         } 
         if(CC != -1)
         {
-          caesar_cipher(arr, CC);
+          caesar_cipher(buffer, CC);
         }
         else if(GR != -1)
         {
-          general_rotation(arr, GR);
+          general_rotation(buffer, GR);
         }
         if(hex == true)
         {
-          hex_conversion(arr, j);
+          hex_conversion(buffer, j);
         }
         else if(bin == true)
         {
-          bin_conversion(arr, j);
+          bin_conversion(buffer, j);
         }
-       while((read(fd, arr, buffer)) > 0)
-       { 
-        write(STDOUT_FILENO, arr, j);
-       }
+       
        delete[] buffer;
        close(fd);
     }
