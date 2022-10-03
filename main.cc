@@ -50,7 +50,6 @@ int main(int argc, char* argv[])
     {
         int j = 0;
         char *buffer = new char[arraySize];
-        char *arr2 = NULL;
         int fd = open(argv[i], O_RDONLY);
         if(fd == -1)
         {
@@ -59,7 +58,7 @@ int main(int argc, char* argv[])
       
         if(strcmp(argv[optind], "-") == 0)
         {
-            while((n = read(STDIN_FILENO, buffer, arraySize)) > 0){
+            while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
                 if(write(STDOUT_FILENO, buffer, j) != j){
                     perror("writing error");
                     return -1;
