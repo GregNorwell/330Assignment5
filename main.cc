@@ -5,6 +5,8 @@
 #include <string.h>
 #include <fcntl.h>
 
+#include <iostream>
+
 #include "header.h"
 int main(int argc, char* argv[]){
     bool hex, bin;
@@ -83,6 +85,7 @@ int main(int argc, char* argv[]){
       bin_conversion(arr, j);
     }
     for(j = 0; arr[j] != '\0'; j++)
+        cout << arr[j];
         write(STDOUT_FILENO, arr, 1);
     free(arr);
   }
