@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     }
     for(int i = optind; i < argc; i++)
     {
-        int j, size;
+        int j;
         char *buffer = new char[arraySize];
         if(strcmp(argv[i], "-") == 0)
         {
