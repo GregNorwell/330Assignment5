@@ -110,8 +110,8 @@ int main(int argc, char* argv[])
         write(STDOUT_FILENO, arr, j);
         free(arr);
         close(fd);
+        std::cout<<j;
     }
 }
-    std::cout<<j;
     return 0;
 }
