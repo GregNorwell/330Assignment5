@@ -5,6 +5,8 @@
 #include <string.h>
 #include <fcntl.h>
 
+#include <iostream>
+
 #include "header.h"
 int main(int argc, char* argv[])
 {
@@ -105,9 +107,8 @@ int main(int argc, char* argv[])
         {
           bin_conversion(arr, j);
         }
-        while (read(fd, arr, sizeof(char)) != 0) {
-            write(STDOUT_FILENO, arr, 1);
-        }
+        std::cout<<j;
+        write(STDOUT_FILENO, arr, j);
         free(arr);
         close(fd);
     }
