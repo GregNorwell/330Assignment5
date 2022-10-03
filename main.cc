@@ -98,16 +98,16 @@ int main(int argc, char* argv[])
                 {
                     j++;
                     arr2 = (char*)realloc(arr, j * sizeof(char));
-                  if(arr2 != NULL)
-                  {
+                  //if(arr2 != NULL)
+                  //{
                       arr = arr2;
-                  }
-                  else
-                  {
-                      free(arr);
-                      perror("Cannot allocate memory");
-                      return (-1);
-                  }
+                 // }
+                  //else
+                  //{
+                      //free(arr);
+                      //perror("Cannot allocate memory");
+                      //return (-1);
+                 // }
                 }while(read(fd, arr, 1) != 0);
             }
         } 
