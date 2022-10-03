@@ -48,7 +48,6 @@ void hex_conversion(char *& msg, int length)
     msg[j + 1] = temp[i] >> 4;
     j += 2;
   }
-  delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
 {
