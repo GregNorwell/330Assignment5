@@ -83,7 +83,6 @@ int main(int argc, char* argv[]){
                     arr2 = (char*)realloc(arr, j * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
-                      arr[j] = read(fd, arr, 1);
                   }else{
                       free(arr);
                       perror("Cannot allocate memory");
