@@ -11,6 +11,7 @@
 int main(int argc, char* argv[])
 {
     bool hex, bin;
+    uint32_t arraySize = 1024;
     int buffer = 1, length = -1, CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
@@ -48,7 +49,7 @@ int main(int argc, char* argv[])
     for(int i = optind; i < argc; i++)
     {
         int j = 0;
-        char *arr = NULL;
+        char *buffer = new char[arraySize];
         char *arr2 = NULL;
         int fd = open(argv[i], O_RDONLY);
         if(fd == -1)
@@ -58,59 +59,16 @@ int main(int argc, char* argv[])
       
         if(strcmp(argv[optind], "-") == 0)
         {
-            for(j = 0; arr[j] != '\0'; j++)
-            {
-                  arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
-                  if(arr2 != NULL){
-                      arr = arr2;
-                      arr[j] = read(STDIN_FILENO, arr, 1);
-                  }
-                  else
-                  {
-                      free(arr);
-                      perror("Cannot allocate memory");
-                      return (-1);
-                  }
+            while((n = read(STDIN_FILENO, buffer, arraySize)) > 0){
+                if(write(STDOUT_FILENO, buffer, j) != j){
+                    perror("writing error");
+                    return -1;
+                }
             }
         }
         else
         {
-            if(length != -1)
-            {
-                for(j = 0; j < length; j++)
-                {
-                  arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
-                  if(arr2 != NULL)
-                  {
-                      arr = arr2;
-                      arr[j] = read(fd, arr, 1);
-                  }
-                  else
-                  {
-                      free(arr);
-                      perror("Cannot allocate memory");
-                      return (-1);
-                  }
-                }
-            }
-            else
-            {
-                while(read(fd,arr,1) != 0)
-                {
-                    j++;
-                    arr2 = (char*)realloc(arr, j * sizeof(char));
-                  if(arr2 != NULL)
-                  {
-                      arr = arr2;
-                  }
-                  else
-                  {
-                      free(arr);
-                      perror("Cannot allocate memory");
-                      return (-1);
-                  }
-                }
-            }
+            
         } 
         if(CC != -1)
         {
@@ -132,7 +90,7 @@ int main(int argc, char* argv[])
        { 
         write(STDOUT_FILENO, arr, j);
        }
-       free(arr);
+       delete[] buffer;
        close(fd);
     }
        return 0;
