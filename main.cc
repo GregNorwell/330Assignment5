@@ -82,7 +82,8 @@ int main(int argc, char* argv[]){
     else if(bin == true){
       bin_conversion(arr, j);
     }
-    write(STDOUT_FILENO, arr, j);
+    for(j = 0; arr[j] != '\0'; j++)
+        write(STDOUT_FILENO, arr, 1);
     free(arr);
   }
   return 0;
