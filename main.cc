@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
     }
     for(int i = optind; i < argc; i++)
     {
-        int j;
+        int j, size;
         char *buffer = new char[arraySize];
         if(strcmp(argv[i], "-") == 0)
         {
@@ -90,6 +90,7 @@ int main(int argc, char* argv[])
           bin_conversion(buffer, j);
         }
         
+        std::cout << j << std::endl;
         write(STDOUT_FILENO, buffer, j);
                     
         
