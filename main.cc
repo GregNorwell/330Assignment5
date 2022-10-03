@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
                   arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
-                      arr[j - 1] = read(STDIN_FILENO, arr, 1);
+                      arr[j ] = read(STDIN_FILENO, arr, 1);
                   }else{
                       free(arr);
                       perror("Cannot allocate memory");
@@ -70,7 +70,7 @@ int main(int argc, char* argv[]){
                   arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
-                      arr[j - 1] = read(fd, arr, 1);
+                      arr[j] = read(fd, arr, 1);
                   }else{
                       free(arr);
                       perror("Cannot allocate memory");
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]){
                   arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
-                      arr[j - 1] = read(fd, arr, 1);
+                      arr[j] = read(fd, arr, 1);
                   }else{
                       free(arr);
                       perror("Cannot allocate memory");
