@@ -43,6 +43,7 @@ void hex_conversion(char *& msg, int length)
   msg = (char*)realloc(msg, (length * 2) * sizeof(char));
   for(int i = 0; i < (length * 2); i++)
     msg[i] = temp[i];
+  delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
 {
@@ -60,4 +61,5 @@ void bin_conversion(char *& msg, int length)
   msg = (char*)realloc(msg, (length * 8) * sizeof(char));
   for(int i = 0; i < (length * 8); i++)
     msg[i] = temp[i];
+  delete[] temp;
 }
