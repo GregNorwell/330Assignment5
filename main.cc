@@ -69,6 +69,7 @@ int main(int argc, char* argv[])
             
             while(read(fd, buffer, arraySize) != '\0'){
                 j++;
+                cout << j << endl;
             }
             
             close(fd);
