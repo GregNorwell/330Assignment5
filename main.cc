@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 {
     bool hex, bin;
     uint32_t arraySize = 1024;
-    //int buffer, length = -1
+    int altbuflength = 1, length = -1;
     int CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
@@ -20,10 +20,10 @@ int main(int argc, char* argv[])
      {
       case 'b':
          //use optarg for argument
-         //buffer = atoi(optarg);
+         altbuflength = atoi(optarg);
          break;
        case 'n':
-         //length = atoi(optarg);
+         length = atoi(optarg);
          break;
        case 'c':
          CC = atoi(optarg);
@@ -69,7 +69,6 @@ int main(int argc, char* argv[])
             
             while((j = read(fd, buffer, arraySize)) > 0){
                 size = j;
-                std::cout << j << std::endl;
             }
             
             close(fd);
@@ -91,9 +90,11 @@ int main(int argc, char* argv[])
           bin_conversion(buffer, size);
         }
         
+        if(length != -1)
+            write(STDOUT_FILENO, buffer, length);
+        
         write(STDOUT_FILENO, buffer, size);
                     
-        
        delete[] buffer;
     }
        return 0;
