@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     uint32_t arraySize = 1024;
     int length = -1;
     int CC = -1, GR = -1;
-    while(opt = getopt(argc, argv, ":b:n:c:r:xb") != -1)
+    while((opt = getopt(argc, argv, ":b:n:c:r:XB")) != -1)
     {
      switch(opt)
      {
@@ -32,10 +32,10 @@ int main(int argc, char* argv[])
        case 'r':
          GR = atoi(optarg);
          break;
-       case 'x':
+       case 'X':
          hex = true;
          break;
-       case 'b':
+       case 'B':
          bin = true;
          break;
        case ':':
