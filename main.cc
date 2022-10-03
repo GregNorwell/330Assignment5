@@ -107,11 +107,11 @@ int main(int argc, char* argv[])
         {
           bin_conversion(arr, j);
         }
-        std::cout<<j;
         write(STDOUT_FILENO, arr, j);
         free(arr);
         close(fd);
     }
     return 0;
+    std::cout<<j;
 }
 }
