@@ -11,7 +11,7 @@
 int main(int argc, char* argv[]){
     bool hex, bin;
     int buffer = 1, length = -1, CC = -1, GR = -1;
-    while(char opt = getopt(argc, argv, ":b:n:C:r:XB") != -1)
+    while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
      switch(opt)
      {
@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
        case 'n':
          length = atoi(optarg);
          break;
-       case 'C':
+       case 'c':
          CC = atoi(optarg);
          break;
        case 'r':
