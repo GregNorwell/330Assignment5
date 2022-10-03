@@ -35,7 +35,6 @@ void general_rotation(char *& msg, int k){
 void hex_conversion(char *& msg, int length)
 {
   for(int i = 0; i < length; ++i){std::cout << msg[i] << " ";}
-  std::cout << std::endl;
   char *temp = new char[length];
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
@@ -44,7 +43,7 @@ void hex_conversion(char *& msg, int length)
   
   //for(int i = 0; i < length; ++i){std::cout << temp[i] << " ";}
   //std::cout << std::endl;
-  //for(int i = 0; i < length; ++i){std::cout << msg[i] << " ";}
+  for(int i = 0; i < length; ++i){std::cout << msg[i] << " ";}
   //std::cout << std::endl;
   
   for(int i = 0; i < length; i++){
