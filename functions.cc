@@ -34,20 +34,20 @@ void general_rotation(char *& msg, int k){
 }
 void hex_conversion(char *& msg, int length)
 {
-  char *temp = new char[length * 2];
+  char temp[length];
+  for(int i = 0; i < length; i++)
+    temp[i] = msg[i];
+  msg = (char*)realloc(msg, (length * 2) * sizeof(char));
   int j = 0;
   
-  for(int i = 0; i < length; ++i){std::cout << msg[i] << " ";}
+  for(int i = 0; i < length; ++i){std::cout << temp[i] << " ";}
   std::cout << length;
   
   for(int i = 0; i < length; i++){
-    temp[j] = msg[i] & 15;
-    temp[j + 1] = msg[i] >> 4;
+    msg[j] = temp[i] & 15;
+    msg[j + 1] = temp[i] >> 4;
     j += 2;
   }
-  msg = (char*)realloc(msg, (length * 2) * sizeof(char));
-  for(int i = 0; i < (length * 2); i++)
-    msg[i] = temp[i];
   delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
