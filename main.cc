@@ -40,10 +40,10 @@ int main(int argc, char* argv[])
          break;
        case ':':
          perror("option needs a value");
-         return(-1);
+         return -1;
        case '?':
          perror("unknown option");
-         return(-1);
+         return -1;
        default:
          break;
      }
@@ -89,6 +89,7 @@ int main(int argc, char* argv[])
         }
         else if(bin == true)
         {
+          std::cout << "bin active" << std::endl;
           bin_conversion(buffer, size);
         }
         
