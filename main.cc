@@ -83,6 +83,7 @@ int main(int argc, char* argv[])
         }
         if(hex == true)
         {
+          std::cout << "hex active" << std::endl;
           hex_conversion(buffer, size);
         }
         else if(bin == true)
