@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
         char *buffer = new char[arraySize];
         if(strcmp(argv[i], "-") == 0)
         {
-            while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
-                
+            while(read(STDIN_FILENO, buffer, arraySize) > 0){
+                j++;
             }
         }
         else
@@ -64,8 +64,8 @@ int main(int argc, char* argv[])
                 perror("Cannot open file");return(-1);
             }
             
-            while((j = read(fd, buffer, arraySize)) > 0){
-                
+            while(read(fd, buffer, arraySize) > 0){
+                j++;
             }
             
             close(fd);
