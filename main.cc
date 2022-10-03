@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
      }
     }
   
-    for(int i = optind; i < argc; i++)
+    for(int i = 1; i < argc; i++)
     {
         int j;
         char *arr = NULL;
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
                   arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
-                      arr[j ] = read(STDIN_FILENO, arr, 1);
+                      arr[j] = read(STDIN_FILENO, arr, 1);
                   }else{
                       free(arr);
                       perror("Cannot allocate memory");
