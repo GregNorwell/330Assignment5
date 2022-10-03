@@ -11,13 +11,14 @@
 int main(int argc, char* argv[])
 {
     bool hex, bin;
-    int length = -1, CC = -1, GR = -1;
+    int buffer = 1, length = -1, CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
      switch(opt)
      {
       case 'b':
          //use optarg for argument
+         buffer = atoi(optarg);
          break;
        case 'n':
          length = atoi(optarg);
@@ -94,7 +95,7 @@ int main(int argc, char* argv[])
             }
             else
             {
-                do
+                while(read(fd,arr,1) != 0)
                 {
                     j++;
                     arr2 = (char*)realloc(arr, j * sizeof(char));
@@ -108,7 +109,7 @@ int main(int argc, char* argv[])
                       perror("Cannot allocate memory");
                       return (-1);
                   }
-                }while(read(fd, arr, 1) != 0);
+                }
             }
         } 
         if(CC != -1)
@@ -127,7 +128,7 @@ int main(int argc, char* argv[])
         {
           bin_conversion(arr, j);
         }
-       while(read(fd, arr, bufsize))>0)
+       while((read(fd, arr, buffer)) > 0)
        { 
         write(STDOUT_FILENO, arr, j);
        }
