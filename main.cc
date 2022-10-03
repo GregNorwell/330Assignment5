@@ -106,6 +106,7 @@ int main(int argc, char* argv[]){
     }
     write(STDOUT_FILENO, arr, j);
     free(arr);
+    close(fd);
     }
     return 0;
 }
