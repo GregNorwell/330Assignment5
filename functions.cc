@@ -41,11 +41,13 @@ void hex_conversion(char *& msg, int length)
   int j = 0;
   
   for(int i = 0; i < length; ++i){std::cout << temp[i] << " ";}
-  std::cout << length;
+  std::cout << std::endl;
   
   for(int i = 0; i < length; i++){
     msg[j] = temp[i] & 15;
+    std::cout << msg[j];
     msg[j + 1] = temp[i] >> 4;
+    std::cout << msg[j+ 1];
     j += 2;
   }
   for(int i = 0; i < (length * 2); ++i){std::cout << msg[i] << " ";}
