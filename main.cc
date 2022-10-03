@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
         free(arr);
         close(fd);
     }
-    return 0;
-    std::cout<<j;
 }
+    std::cout<<j;
+    return 0;
 }
