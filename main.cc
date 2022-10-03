@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 {
     bool hex, bin;
     uint32_t arraySize = 1024;
-    int altbuflength = 1, length = -1;
+    int length = -1;
     int CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
