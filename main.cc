@@ -51,12 +51,6 @@ int main(int argc, char* argv[])
     {
         int j = 0;
         char *buffer = new char[arraySize];
-        int fd = open(argv[i], O_RDONLY);
-        if(fd == -1)
-        {
-            perror("Cannot open file");return(-1);
-        }
-      
         if(strcmp(argv[i], "-") == 0)
         {
             while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
@@ -68,7 +62,10 @@ int main(int argc, char* argv[])
         }
         else
         {
-            
+            int fd = open(argv[i], O_RDONLY);
+            if(fd == -1){
+                perror("Cannot open file");return(-1);
+            }
         } 
         if(CC != -1)
         {
