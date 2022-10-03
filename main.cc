@@ -91,7 +91,6 @@ int main(int argc, char* argv[])
           bin_conversion(buffer, size);
         }
         
-        std::cout << size << std::endl;
         write(STDOUT_FILENO, buffer, size);
                     
         
