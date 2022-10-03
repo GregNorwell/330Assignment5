@@ -34,16 +34,16 @@ void general_rotation(char *& msg, int k){
 }
 void hex_conversion(char *& msg, int length)
 {
-  for(int i = 0; i < length; ++i){std::cout << msg[i] << " ";}
+  for(int i = 0; i < length; ++i){std::cout << msg[i];}
   char *temp = new char[length];
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   msg = (char*)realloc(msg, (length * 2) * sizeof(char));
   int j = 0;
   
-  //for(int i = 0; i < length; ++i){std::cout << temp[i] << " ";}
+  //for(int i = 0; i < length; ++i){std::cout << temp[i];}
   //std::cout << std::endl;
-  for(int i = 0; i < length; ++i){std::cout << msg[i] << " ";}
+  for(int i = 0; i < length; ++i){std::cout << msg[i];}
   //std::cout << std::endl;
   
   for(int i = 0; i < length; i++){
@@ -53,7 +53,7 @@ void hex_conversion(char *& msg, int length)
     //std::cout << msg[j+ 1];
     j += 2;
   }
-  //for(int i = 0; i < (length * 2); ++i){std::cout << msg[i] << " ";}
+  //for(int i = 0; i < (length * 2); ++i){std::cout << msg[i];}
   delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
