@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
      }
     }
   
-    for(int i = 1; i < argc; i++)
+    for(int i = optend; i < argc; i++)
     {
         int j;
         char *arr = NULL;
@@ -78,8 +78,8 @@ int main(int argc, char* argv[]){
                   }
                 }
             }else{
-                for(j = 0; arr[j] != '\0'; j++){
-                  arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
+                do{
+                    arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
                       arr[j] = read(fd, arr, 1);
@@ -88,7 +88,7 @@ int main(int argc, char* argv[]){
                       perror("Cannot allocate memory");
                       return (-1);
                   }
-                }
+                }while(read(fd, arr, 1) > 0);
             }
     }
          
