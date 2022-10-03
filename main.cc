@@ -49,24 +49,26 @@ int main(int argc, char* argv[]){
     {
         int j;
         char *arr = NULL;
-        if(arr == NULL){perror("Cannot allocate memory");return(-1);}
         int fd = open(argv[i], O_RDONLY);
         if(fd == -1){perror("Cannot open file");return(-1);}
       
     if(strcmp(argv[optind], "-") == 0){
         for(j = 0; arr[j] != '\0'; j++){
             arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
+            if(arr == NULL){perror("Cannot allocate memory");return(-1);}
             arr[j] = read(STDIN_FILENO, arr, buffer);
         }
     }else{
         if(length != -1){
             for(j = 0; j < length; j++){
               arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
+              if(arr == NULL){perror("Cannot allocate memory");return(-1);}
               arr[j] = read(fd, arr, buffer);
             }
         }else{
             for(j = 0; arr[j] != '\0'; j++){
               arr = (char*)realloc(arr, (j + buffer) * sizeof(char));
+              if(arr == NULL){perror("Cannot allocate memory");return(-1);}
               arr[j] = read(fd, arr, buffer);
             }
         }
