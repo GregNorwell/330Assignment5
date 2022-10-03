@@ -50,47 +50,67 @@ int main(int argc, char* argv[])
         char *arr = NULL;
         char *arr2 = NULL;
         int fd = open(argv[i], O_RDONLY);
-        if(fd == -1){perror("Cannot open file");return(-1);}
+        if(fd == -1)
+        {
+            perror("Cannot open file");return(-1);
+        }
       
-        if(strcmp(argv[optind], "-") == 0){
-            for(j = 0; arr[j] != '\0'; j++){
+        if(strcmp(argv[optind], "-") == 0)
+        {
+            for(j = 0; arr[j] != '\0'; j++)
+            {
                   arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
                       arr[j] = read(STDIN_FILENO, arr, 1);
-                  }else{
+                  }
+                  else
+                  {
                       free(arr);
                       perror("Cannot allocate memory");
                       return (-1);
                   }
             }
-        }else{
-            if(length != -1){
-                for(j = 0; j < length; j++){
+        }
+        else
+        {
+            if(length != -1)
+            {
+                for(j = 0; j < length; j++)
+                {
                   arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
-                  if(arr2 != NULL){
+                  if(arr2 != NULL)
+                  {
                       arr = arr2;
                       arr[j] = read(fd, arr, 1);
-                  }else{
+                  }
+                  else
+                  {
                       free(arr);
                       perror("Cannot allocate memory");
                       return (-1);
                   }
                 }
-            }else{
-                do{
+            }
+            else
+            {
+                do
+                {
                     j++;
                     arr2 = (char*)realloc(arr, j * sizeof(char));
-                  if(arr2 != NULL){
+                  if(arr2 != NULL)
+                  {
                       arr = arr2;
-                  }else{
+                  }
+                  else
+                  {
                       free(arr);
                       perror("Cannot allocate memory");
                       return (-1);
                   }
                 }while(read(fd, arr, 1) != 0);
             }
-         
+        } 
         if(CC != -1)
         {
           caesar_cipher(arr, CC);
@@ -107,11 +127,10 @@ int main(int argc, char* argv[])
         {
           bin_conversion(arr, j);
         }
-        write(STDOUT_FILENO, arr, j);
-        free(arr);
-        close(fd);
-        std::cout<<j;
+       write(STDOUT_FILENO, arr, j);
+       free(arr);
+       close(fd);
+       std::cout<<j;
     }
-}
-    return 0;
+       return 0;
 }
