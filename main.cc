@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
                 perror("Cannot open file");return(-1);
             }
             
-            while(read(fd, buffer, arraySize) > 0){
+            while(read(fd, buffer, arraySize) != '\0'){
                 j++;
             }
             
