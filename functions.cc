@@ -1,6 +1,8 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include <iostream>
+
 #include "header.h"
 void caesar_cipher(char *& msg, int k){ // does each word at a time
   char ch;
@@ -35,7 +37,7 @@ void hex_conversion(char *& msg, int length)
   char *temp = new char[length * 2];
   int j = 0;
   
-  for(int i = 0; msg[i] != '\0'; i++){
+  for(int i = 0; i < length; i++){
     temp[j] = msg[i] & 15;
     temp[j + 1] = msg[i] >> 4;
     j += 2;
@@ -50,7 +52,7 @@ void bin_conversion(char *& msg, int length)
   char *temp = new char[length * 8];
   int j = 0;
   
-  for(int i = 0; msg[i] != '\0'; i++){
+  for(int i = 0; i < length; i++){
     int val = int(msg[i]);
     while(val > 0){
       (val % 2)? temp[j] = '1' : temp[j] = '0';
