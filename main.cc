@@ -10,11 +10,12 @@
 #include "header.h"
 int main(int argc, char* argv[])
 {
-    bool hex, bin;
+    char opt;
+    bool hex = false, bin = false;
     uint32_t arraySize = 1024;
     int length = -1;
     int CC = -1, GR = -1;
-    while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
+    while(opt = getopt(argc, argv, ":b:n:c:r:xb") != -1)
     {
      switch(opt)
      {
@@ -31,10 +32,10 @@ int main(int argc, char* argv[])
        case 'r':
          GR = atoi(optarg);
          break;
-       case 'X':
+       case 'x':
          hex = true;
          break;
-       case 'B':
+       case 'b':
          bin = true;
          break;
        case ':':
