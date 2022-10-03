@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
      }
     }
   
-    for(int i = optend; i < argc; i++)
+    for(int i = optind; i < argc; i++)
     {
         int j;
         char *arr = NULL;
