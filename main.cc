@@ -87,9 +87,8 @@ int main(int argc, char* argv[])
           bin_conversion(buffer, j);
         }
         
-        while(write(STDOUT_FILENO, buffer, j) != j){
+        write(STDOUT_FILENO, buffer, j);
                     
-        }
         
        delete[] buffer;
     }
