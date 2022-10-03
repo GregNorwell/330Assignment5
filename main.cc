@@ -66,6 +66,8 @@ int main(int argc, char* argv[])
             if(fd == -1){
                 perror("Cannot open file");return(-1);
             }
+            
+            close(fd);
         } 
         if(CC != -1)
         {
@@ -85,7 +87,6 @@ int main(int argc, char* argv[])
         }
        
        delete[] buffer;
-       close(fd);
     }
        return 0;
 }
