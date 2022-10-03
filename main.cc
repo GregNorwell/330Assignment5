@@ -90,23 +90,22 @@ int main(int argc, char* argv[]){
                   }
                 }while(read(fd, arr, 1) != 0);
             }
-    }
          
-    if(CC != -1){
-      caesar_cipher(arr, CC);
-    }
-    else if(GR != -1){
-      general_rotation(arr, GR);
-    }
-    if(hex == true){
-      hex_conversion(arr, j);
-    }
-    else if(bin == true){
-      bin_conversion(arr, j);
-    }
-    write(STDOUT_FILENO, arr, j);
-    free(arr);
-    close(fd);
+        if(CC != -1){
+          caesar_cipher(arr, CC);
+        }
+        else if(GR != -1){
+          general_rotation(arr, GR);
+        }
+        if(hex == true){
+          hex_conversion(arr, j);
+        }
+        else if(bin == true){
+          bin_conversion(arr, j);
+        }
+        write(STDOUT_FILENO, arr, j);
+        free(arr);
+        close(fd);
     }
     return 0;
 }
