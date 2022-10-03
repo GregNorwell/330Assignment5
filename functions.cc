@@ -34,7 +34,7 @@ void general_rotation(char *& msg, int k){
 }
 void hex_conversion(char *& msg, int length)
 {
-  char *temp;
+  char *temp = new char[length];
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   msg = (char*)realloc(msg, (length * 2) * sizeof(char));
