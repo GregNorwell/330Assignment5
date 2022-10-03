@@ -53,8 +53,11 @@ int main(int argc, char* argv[])
         char *buffer = new char[arraySize];
         if(strcmp(argv[i], "-") == 0)
         {
-            while(read(STDIN_FILENO, buffer, arraySize) > 0){
-                j++;
+            while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
+                if(write(STDOUT_FILENO, buffer, j) != j){
+                    perror("writing error");
+                    return -1;
+                }
             }
         }
         else
