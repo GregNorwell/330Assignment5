@@ -46,7 +46,7 @@ int main(int argc, char* argv[]){
   for(int i = optind; i < argc; i++)
   {
     int j;
-    char *arr = (char*)calloc(0, sizeof(char));
+    char *arr = (char*)calloc(1, sizeof(char));
     if(arr == NULL){perror("Cannot allocate memory");return(-1);}
     int fd = open(argv[i], O_RDONLY);
       
@@ -84,5 +84,5 @@ int main(int argc, char* argv[]){
     write(STDOUT_FILENO, arr, j);
     free(arr);
   }
-  
+  return 0;
 }
