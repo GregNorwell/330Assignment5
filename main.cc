@@ -48,7 +48,7 @@ int main(int argc, char* argv[]){
     for(int i = optind; i < argc; i++)
     {
         int j;
-        char *arr = (char*)calloc(1, sizeof(char));
+        char *arr = NULL;
         if(arr == NULL){perror("Cannot allocate memory");return(-1);}
         int fd = open(argv[i], O_RDONLY);
         if(fd == -1){perror("Cannot open file");return(-1);}
