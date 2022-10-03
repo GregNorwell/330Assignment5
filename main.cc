@@ -43,7 +43,7 @@ int main(int argc, char* argv[]){
      }
    }
   
-  for(int i = argv[optind]; i < argc; i++)
+  for(int i = optind; i < argc; i++)
   {
     int j;
     char *arr = (char*)calloc(0, sizeof(char));
