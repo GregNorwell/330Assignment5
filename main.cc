@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
      {
       case 'b':
          //use optarg for argument
-         altbuflength = atoi(optarg);
+         //altbuflength = atoi(optarg);
          break;
        case 'n':
          length = atoi(optarg);
