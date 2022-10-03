@@ -12,17 +12,18 @@ int main(int argc, char* argv[])
 {
     bool hex, bin;
     uint32_t arraySize = 1024;
-    int buffer = 1, length = -1, CC = -1, GR = -1;
+    //int buffer, length = -1
+    int CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
      switch(opt)
      {
       case 'b':
          //use optarg for argument
-         buffer = atoi(optarg);
+         //buffer = atoi(optarg);
          break;
        case 'n':
-         length = atoi(optarg);
+         //length = atoi(optarg);
          break;
        case 'c':
          CC = atoi(optarg);
