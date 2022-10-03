@@ -88,7 +88,7 @@ int main(int argc, char* argv[]){
                       perror("Cannot allocate memory");
                       return (-1);
                   }
-                }while(read(fd, arr, 1) > 0);
+                }while(read(fd, arr, 1) != 0);
             }
     }
          
