@@ -10,7 +10,7 @@
 #include "header.h"
 int main(int argc, char* argv[]){
     bool hex, bin;
-    int buffer = 1, length = -1, CC = -1, GR = -1;
+    int length = -1, CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
     {
      switch(opt)
@@ -88,6 +88,7 @@ int main(int argc, char* argv[]){
                   free(arr);
                   perror("Cannot allocate memory");
                   return (-1);
+              }
             }
         }
     }
