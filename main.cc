@@ -79,8 +79,8 @@ int main(int argc, char* argv[]){
                 }
             }else{
                 do{
-                    arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
                     j++;
+                    arr2 = (char*)realloc(arr, j * sizeof(char));
                   if(arr2 != NULL){
                       arr = arr2;
                       arr[j] = read(fd, arr, 1);
