@@ -105,7 +105,9 @@ int main(int argc, char* argv[])
         {
           bin_conversion(arr, j);
         }
-        write(STDOUT_FILENO, arr, j);
+        while (read(fd, &arr, sizeof(char)) != 0) {
+            write(STDOUT_FILENO, arr, j);
+        }
         free(arr);
         close(fd);
     }
