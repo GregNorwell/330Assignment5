@@ -46,51 +46,50 @@ int main(int argc, char* argv[]){
   
     for(int i = optind; i < argc; i++)
     {
-        std::cout << optind;
         int j;
         char *arr = NULL;
         char *arr2 = NULL;
         int fd = open(argv[i], O_RDONLY);
         if(fd == -1){perror("Cannot open file");return(-1);}
       
-    if(strcmp(argv[optind], "-") == 0){
-        for(j = 0; arr[j] != '\0'; j++){
-              arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
-              if(arr2 != NULL){
-                  arr = arr2;
-                  arr[j - 1] = read(STDIN_FILENO, arr, 1);
-              }else{
-                  free(arr);
-                  perror("Cannot allocate memory");
-                  return (-1);
-              }
-        }
-    }else{
-        if(length != -1){
-            for(j = 0; j < length; j++){
-              arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
-              if(arr2 != NULL){
-                  arr = arr2;
-                  arr[j - 1] = read(fd, arr, 1);
-              }else{
-                  free(arr);
-                  perror("Cannot allocate memory");
-                  return (-1);
-              }
+        if(strcmp(argv[optind], "-") == 0){
+            for(j = 0; arr[j] != '\0'; j++){
+                  arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
+                  if(arr2 != NULL){
+                      arr = arr2;
+                      arr[j - 1] = read(STDIN_FILENO, arr, 1);
+                  }else{
+                      free(arr);
+                      perror("Cannot allocate memory");
+                      return (-1);
+                  }
             }
         }else{
-            for(j = 0; arr[j] != '\0'; j++){
-              arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
-              if(arr2 != NULL){
-                  arr = arr2;
-                  arr[j - 1] = read(fd, arr, 1);
-              }else{
-                  free(arr);
-                  perror("Cannot allocate memory");
-                  return (-1);
-              }
+            if(length != -1){
+                for(j = 0; j < length; j++){
+                  arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
+                  if(arr2 != NULL){
+                      arr = arr2;
+                      arr[j - 1] = read(fd, arr, 1);
+                  }else{
+                      free(arr);
+                      perror("Cannot allocate memory");
+                      return (-1);
+                  }
+                }
+            }else{
+                for(j = 0; arr[j] != '\0'; j++){
+                  arr2 = (char*)realloc(arr, (j + 1) * sizeof(char));
+                  if(arr2 != NULL){
+                      arr = arr2;
+                      arr[j - 1] = read(fd, arr, 1);
+                  }else{
+                      free(arr);
+                      perror("Cannot allocate memory");
+                      return (-1);
+                  }
+                }
             }
-        }
     }
          
     if(CC != -1){
