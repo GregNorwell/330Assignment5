@@ -84,11 +84,11 @@ int main(int argc, char* argv[])
         }
         if(hex == true)
         {
-          hex_conversion(buffer, j);
+          hex_conversion(buffer, size);
         }
         else if(bin == true)
         {
-          bin_conversion(buffer, j);
+          bin_conversion(buffer, size);
         }
         
         std::cout << size << std::endl;
