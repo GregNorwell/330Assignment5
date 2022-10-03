@@ -17,7 +17,6 @@ int main(int argc, char* argv[]){
      {
       case 'b':
          //use optarg for argument
-         buffer = atoi(optarg);
          break;
        case 'n':
          length = atoi(optarg);
