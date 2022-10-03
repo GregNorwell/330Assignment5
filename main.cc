@@ -46,6 +46,7 @@ int main(int argc, char* argv[]){
   
     for(int i = optind; i < argc; i++)
     {
+        std::cout << optind;
         int j;
         char *arr = NULL;
         char *arr2 = NULL;
