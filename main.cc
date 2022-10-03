@@ -5,10 +5,9 @@
 #include <string.h>
 #include <fcntl.h>
 
-#include <iostream>
-
 #include "header.h"
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
     bool hex, bin;
     int length = -1, CC = -1, GR = -1;
     while(char opt = getopt(argc, argv, ":b:n:c:r:XB") != -1)
@@ -43,7 +42,6 @@ int main(int argc, char* argv[]){
          break;
      }
     }
-  
     for(int i = optind; i < argc; i++)
     {
         int j;
@@ -91,16 +89,20 @@ int main(int argc, char* argv[]){
                 }while(read(fd, arr, 1) != 0);
             }
          
-        if(CC != -1){
+        if(CC != -1)
+        {
           caesar_cipher(arr, CC);
         }
-        else if(GR != -1){
+        else if(GR != -1)
+        {
           general_rotation(arr, GR);
         }
-        if(hex == true){
+        if(hex == true)
+        {
           hex_conversion(arr, j);
         }
-        else if(bin == true){
+        else if(bin == true)
+        {
           bin_conversion(arr, j);
         }
         write(STDOUT_FILENO, arr, j);
@@ -108,4 +110,5 @@ int main(int argc, char* argv[]){
         close(fd);
     }
     return 0;
+}
 }
