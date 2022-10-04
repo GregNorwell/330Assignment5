@@ -54,8 +54,7 @@ void bin_conversion(char *& msg, int length)
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   msg = (char*)realloc(msg, (length * 8) * sizeof(char)); //increase size by 8
-  int j = 0;
-  double val;
+  int j = 0, val;
 
   for(int i = 0; i < length; i++){
     val = int(temp[i]); // convert char to ascii value
