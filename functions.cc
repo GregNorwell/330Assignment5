@@ -34,32 +34,28 @@ void general_rotation(char *& msg, int k){
 }
 void hex_conversion(char *& msg, int length)
 {
-  char *temp = new char[length];
+  char *temp = new char[length];//port old to temp
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   static const char hex_digits[] = "0123456789ABCDEF";
-  msg = (char*)realloc(msg, (length * 2) * sizeof(char));
+  msg = (char*)realloc(msg, (length * 2) * sizeof(char)); //increase size by 2
   int j = 0;
-  
-  //for(int i = 0; i < length; ++i){std::cout << msg[i];}
   
   for(int i = 0; i < length; i++){
     msg[j] = hex_digits[int(temp[i]) >> 4];
-    //std::cout << int(msg[j]);
     msg[j + 1] = hex_digits[int(temp[i]) & 15];
-    //std::cout << int(msg[j+ 1]);
     j += 2;
   }
-  //for(int i = 0; i < (length * 2); ++i){std::cout << msg[i];}
   delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
 {
-  char *temp = new char[length];
+  char *temp = new char[length];//port old to temp
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
-  msg = (char*)realloc(msg, (length * 8) * sizeof(char));
-  int j = 0, val;
+  msg = (char*)realloc(msg, (length * 8) * sizeof(char)); //increase size by 8
+  int j = 0;
+  double val;
 
   for(int i = 0; i < length; i++){
     val = int(temp[i]); // convert char to ascii value
