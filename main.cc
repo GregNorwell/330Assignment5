@@ -5,14 +5,12 @@
 #include <string.h>
 #include <fcntl.h>
 
-#include <iostream>
-
 #include "header.h"
 int main(int argc, char* argv[])
 {
     char opt;
     bool hex = false, bin = false;
-    uint32_t arraySize = 1024;
+    uint32_t arraySize = 4064;
     int length = -1, altbuflength;
     int CC = -1, GR = -1;
     while((opt = getopt(argc, argv, ":b:n:c:r:XB")) != -1)
@@ -55,7 +53,7 @@ int main(int argc, char* argv[])
         char *buffer = new char[arraySize];
         if(strcmp(argv[i], "-") == 0)
         {
-            while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
+            while((j = read(STDIN_FILENO, buffer, 1)) > 0){
                 if(write(STDOUT_FILENO, buffer, j) != j){
                     perror("writing error");
                     return -1;
@@ -64,12 +62,12 @@ int main(int argc, char* argv[])
         }
         else
         {
-            int fd = open(argv[i], O_RDONLY);
+            int fd = open(argv[i], O_RDONLY); //open file in read only
             if(fd == -1){
                 perror("Cannot open file");return(-1);
             }
             
-            while((j = read(fd, buffer, arraySize)) > 0){
+            while((j = read(fd, buffer, 1)) > 0){
                 size = j;
             }
             
@@ -85,23 +83,21 @@ int main(int argc, char* argv[])
         }
         if(hex == true)
         {
-          std::cout << "hex active" << std::endl;
           hex_conversion(buffer, size);
           size = size * 2;
         }
         else if(bin == true)
         {
-          std::cout << "bin active" << std::endl;
           bin_conversion(buffer, size);
           size = size * 8;
         }
         
-        if(length != -1)
+        if(length != -1) //write if length limited
             write(STDOUT_FILENO, buffer, length);
         
-        write(STDOUT_FILENO, buffer, size);
+        write(STDOUT_FILENO, buffer, size); // write otherwise
                     
-       delete[] buffer;
+       delete[] buffer; //free up space
     }
        return 0;
 }
