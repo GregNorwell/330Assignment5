@@ -64,6 +64,6 @@ void bin_conversion(char *& msg, int length)
       val /= 2;
     }
   }
-  
-  delete[] temp;
+
+   delete[] temp;
 }
