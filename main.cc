@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 {
     char opt;
     bool hex = false, bin = false;
-    int length = -1, arraySize = 5056;
+    int length = -1, arraySize = 5056, altbuflength;
     int CC = -1, GR = -1;
     while((opt = getopt(argc, argv, ":b:n:c:r:XB")) != -1)
     {
