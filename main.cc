@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
         if(length != -1)
             write(STDOUT_FILENO, buffer, length);
         
-        write(STDOUT_FILENO, buffer, size - 1);
+        write(STDOUT_FILENO, buffer, size);
                     
        delete[] buffer;
     }
