@@ -10,8 +10,7 @@ int main(int argc, char* argv[])
 {
     char opt;
     bool hex = false, bin = false;
-    uint32_t arraySize = 4064;
-    int length = -1, altbuflength;
+    int length = -1;
     int CC = -1, GR = -1;
     while((opt = getopt(argc, argv, ":b:n:c:r:XB")) != -1)
     {
@@ -19,8 +18,8 @@ int main(int argc, char* argv[])
      {
       case 'b':
          //use optarg for argument
-         altbuflength = atoi(optarg);
-         arraySize = altbuflength;
+         //altbuflength = atoi(optarg);
+         //arraySize = altbuflength;
          break;
        case 'n':
          length = atoi(optarg);
