@@ -59,11 +59,11 @@ void bin_conversion(char *& msg, int length)
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   msg = (char*)realloc(msg, (length * 8) * sizeof(char));
-  int j;
+  int j = 0, val;
 
   for(int i = 0; i < length; i++){
-    int val = temp[i];
-    while(val > 0){
+    val = int(temp[i]); // convert char to ascii value
+    while(val > 0){ // convert ascii to binary
       (val % 2)? msg[j] = '1' : msg[j] = '0';
       j++;
       val /= 2;
