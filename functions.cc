@@ -55,19 +55,19 @@ void hex_conversion(char *& msg, int length)
 }
 void bin_conversion(char *& msg, int length)
 {
-  char *temp = new char[length * 8];
+  char *temp = new char[length];
+  for(int i = 0; i < length; i++)
+    temp[i] = msg[i];
+  msg = (char*)realloc(msg, (length * 8) * sizeof(char));
   int j = 0;
   
   for(int i = 0; i < length; i++){
     int val = int(msg[i]);
     while(val > 0){
-      (val % 2)? temp[j] = '1' : temp[j] = '0';
+      (val % 2)? msg[j] = '1' : msg[j] = '0';
       j++;
       val /= 2;
     }
   }
-  msg = (char*)realloc(msg, (length * 8) * sizeof(char));
-  for(int i = 0; i < (length * 8); i++)
-    msg[i] = temp[i];
   delete[] temp;
 }
