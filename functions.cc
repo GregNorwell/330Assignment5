@@ -62,7 +62,7 @@ void bin_conversion(char *& msg, int length)
   int c;
   //int j;
   
-  for(int i = 0; temp[i] != '\0'; i++)
+  for(int i = 0; msg[i] != '\0'; i++)
   {
     c = temp[i];
     if(c != ' ')
