@@ -44,7 +44,7 @@ void hex_conversion(char *& msg, int length)
   
   for(int i = 0; i < length; i++){
     msg[j] = int(temp[i]) & 15;
-    std::cout << int(temp[i]);
+    std::cout << int(temp[i]) & 15;
     msg[j + 1] = int(temp[i]) >> 4;
     //std::cout << int(msg[j+ 1]);
     j += 2;
