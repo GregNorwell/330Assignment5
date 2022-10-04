@@ -59,37 +59,16 @@ void bin_conversion(char *& msg, int length)
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   msg = (char*)realloc(msg, (length * 8) * sizeof(char));
-  int c;
-  //int j;
-  
-  for(int i = 0; i < (length * 8); i++)
-  {
-    c = temp[i];
-    if(c != ' ')
-    {
-      for(int j = 7; j+1>0; j--)
-      {
-        if(c>=(1<<j))
-        {
-          c=c-(1<<j);
-          msg[i] = '1';
-        }
-        else
-        {
-          msg[i] = '0';
-        }
-      }
-    }
-  }
-  
-  /*for(int i = 0; i < length; i++){
+  int j;
+
+  for(int i = 0; i < length; i++){
     int val = temp[i];
     while(val > 0){
       (val % 2)? msg[j] = '1' : msg[j] = '0';
       j++;
       val /= 2;
     }
-  }*/
+  }
   
   delete[] temp;
 }
