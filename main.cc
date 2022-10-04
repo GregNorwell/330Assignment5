@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
         char *buffer = new char[arraySize];
         if(strcmp(argv[i], "-") == 0)
         {
-            while((j = read(STDIN_FILENO, buffer, 1)) > 0){
+            while((j = read(STDIN_FILENO, buffer, arraySize)) > 0){
                 if(write(STDOUT_FILENO, buffer, j) != j){
                     perror("writing error");
                     return -1;
@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
                 perror("Cannot open file");return(-1);
             }
             
-            while((j = read(fd, buffer, 1)) > 0){
+            while((j = read(fd, buffer, arraySize)) > 0){
                 size = j;
             }
             
