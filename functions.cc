@@ -68,11 +68,13 @@ void bin_conversion(char *& msg, int length)
     {
       for(int j = 7; j+1>0; j--)
       {
-        if(c>-(1<<j))
+        if(c>=(1<<j))
         {
           c=c-(1<<j);
           msg[i] = '1';
-        }else{
+        }
+        else
+        {
           msg[i] = '0';
         }
       }
