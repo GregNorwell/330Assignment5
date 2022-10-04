@@ -38,7 +38,7 @@ void hex_conversion(char *& msg, int length)
   for(int i = 0; i < length; i++)
     temp[i] = msg[i];
   static const char hex_digits[] = "0123456789ABCDEF";
-  msg = (char*)realloc(temp, (length * 2) * sizeof(char));
+  msg = (char*)realloc(msg, (length * 2) * sizeof(char));
   int j = 0;
   
   //for(int i = 0; i < length; ++i){std::cout << msg[i];}
@@ -51,6 +51,7 @@ void hex_conversion(char *& msg, int length)
     j += 2;
   }
   //for(int i = 0; i < (length * 2); ++i){std::cout << msg[i];}
+  delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
 {
