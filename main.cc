@@ -86,11 +86,13 @@ int main(int argc, char* argv[])
         {
           std::cout << "hex active" << std::endl;
           hex_conversion(buffer, size);
+          size = size * 2;
         }
         else if(bin == true)
         {
           std::cout << "bin active" << std::endl;
           bin_conversion(buffer, size);
+          size = size * 8;
         }
         
         if(length != -1)
