@@ -83,7 +83,7 @@ void bin_conversion(char *& msg, int length)
   }*/
   
   for(int i = 0; i < length; i++){
-    int val = int(temp[i]);
+    int val = temp[i];
     while(val > 0){
       (val % 2)? msg[j] = '1' : msg[j] = '0';
       j++;
