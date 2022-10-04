@@ -51,8 +51,6 @@ void hex_conversion(char *& msg, int length)
     j += 2;
   }
   //for(int i = 0; i < (length * 2); ++i){std::cout << msg[i];}
-  free(temp);
-  delete[] temp;
 }
 void bin_conversion(char *& msg, int length)
 {
